@@ -105,21 +105,21 @@ class MainActivity : AppCompatActivity() {
     fun buttonEsittir(view: View) {
         if (edit_text.text != null) {
             val newNumber = edit_text.text.toString()
-            var result = 0.0
+            var result = 0
 
             when (op) {
 
                 "/" -> {
-                    result = oldNumber.toDouble() / newNumber.toDouble()
+                    result = oldNumber.toInt() / newNumber.toInt()
                 }
                 "*" -> {
-                    result = oldNumber.toDouble() * newNumber.toDouble()
+                    result = oldNumber.toInt() * newNumber.toInt()
                 }
                 "-" -> {
-                    result = oldNumber.toDouble() - newNumber.toDouble()
+                    result = oldNumber.toInt() - newNumber.toInt()
                 }
                 "+" -> {
-                    result = oldNumber.toDouble() + newNumber.toDouble()
+                    result = oldNumber.toInt() + newNumber.toInt()
                 }
             }
             edit_text.setText(result.toString())

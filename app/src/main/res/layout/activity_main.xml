@@ -20,7 +20,10 @@
         android:paddingTop="15dp"
         android:textAlignment="textEnd"
         android:textColor="@color/white"
-        android:textSize="60sp" />
+        android:textSize="60sp"
+        android:focusableInTouchMode="true"
+        android:cursorVisible="false"
+        android:focusable="false"/>
 
     <LinearLayout
         android:id="@+id/buttons_layout"
