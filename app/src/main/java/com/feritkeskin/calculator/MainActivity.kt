@@ -84,7 +84,7 @@ class MainActivity : AppCompatActivity() {
 
         isNewOp = true
         oldNumber = edit_text.text.toString()
-        var btnSelect: Button = view as Button
+        val btnSelect: Button = view as Button
 
         when (btnSelect.id) {
             button_bol.id -> {
