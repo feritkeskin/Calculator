@@ -103,7 +103,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun buttonEsittir(view: View) {
-        if (edit_text.text != null) {
+        if (edit_text.text == null) {
             val newNumber = edit_text.text.toString()
             var result = 0
 
@@ -132,8 +132,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun yuzde(view: View) {
-        val no: Double = edit_text.text.toString().toDouble() / 100
-        edit_text.setText(no.toString())
-        isNewOp = true
+        if (edit_text.text == null){
+            val no: Double = edit_text.text.toString().toDouble() / 100
+            edit_text.setText(no.toString())
+            isNewOp = true
+        }
     }
 }
