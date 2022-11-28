@@ -3,75 +3,79 @@ package com.feritkeskin.calculator
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_main.*
+import com.feritkeskin.calculator.databinding.ActivityMainBinding
 import net.objecthunter.exp4j.ExpressionBuilder
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
         //Number listeners
-        btn00.setOnClickListener { appendOnClick(true, "00") }
-        btn0.setOnClickListener { appendOnClick(true, "0") }
-        btn1.setOnClickListener { appendOnClick(true, "1") }
-        btn2.setOnClickListener { appendOnClick(true, "2") }
-        btn3.setOnClickListener { appendOnClick(true, "3") }
-        btn4.setOnClickListener { appendOnClick(true, "4") }
-        btn5.setOnClickListener { appendOnClick(true, "5") }
-        btn6.setOnClickListener { appendOnClick(true, "6") }
-        btn7.setOnClickListener { appendOnClick(true, "7") }
-        btn8.setOnClickListener { appendOnClick(true, "8") }
-        btn9.setOnClickListener { appendOnClick(true, "9") }
-        btnDot.setOnClickListener { appendOnClick(true, ".") }
+        binding.btn00.setOnClickListener { appendOnClick(true, "00") }
+        binding.btn0.setOnClickListener { appendOnClick(true, "0") }
+        binding.btn1.setOnClickListener { appendOnClick(true, "1") }
+        binding.btn2.setOnClickListener { appendOnClick(true, "2") }
+        binding.btn3.setOnClickListener { appendOnClick(true, "3") }
+        binding.btn4.setOnClickListener { appendOnClick(true, "4") }
+        binding.btn5.setOnClickListener { appendOnClick(true, "5") }
+        binding.btn6.setOnClickListener { appendOnClick(true, "6") }
+        binding.btn7.setOnClickListener { appendOnClick(true, "7") }
+        binding.btn8.setOnClickListener { appendOnClick(true, "8") }
+        binding.btn9.setOnClickListener { appendOnClick(true, "9") }
+        binding.btnDot.setOnClickListener { appendOnClick(true, ".") }
 
         //Operator Listeners
-        btnPlus.setOnClickListener { appendOnClick(false, "+") }
-        btnMinus.setOnClickListener { appendOnClick(false, "-") }
-        btnMultiply.setOnClickListener { appendOnClick(false, "*") }
-        btnDivide.setOnClickListener { appendOnClick(false, "/") }
-        btnLeftB.setOnClickListener { appendOnClick(false, "(") }
-        btnRightB.setOnClickListener { appendOnClick(false, ")") }
+        binding.btnPlus.setOnClickListener { appendOnClick(false, "+") }
+        binding.btnMinus.setOnClickListener { appendOnClick(false, "-") }
+        binding.btnMultiply.setOnClickListener { appendOnClick(false, "*") }
+        binding.btnDivide.setOnClickListener { appendOnClick(false, "/") }
+        binding.btnLeftB.setOnClickListener { appendOnClick(false, "(") }
+        binding.btnRightB.setOnClickListener { appendOnClick(false, ")") }
 
 
-        btnClear.setOnClickListener {
+        binding.btnClear.setOnClickListener {
             clear()
         }
 
-        btnEqual.setOnClickListener {
+        binding.btnEqual.setOnClickListener {
             calculate()
-            tvInput.text = ""
+            binding.tvInput.text = ""
         }
     }
 
     private fun appendOnClick(clear: Boolean, string: String) {
 
         if (clear) {
-            tvOutput.text = ""
-            tvInput.append(string)
+            binding.tvOutput.text = ""
+            binding.tvInput.append(string)
         } else {
-            tvInput.append(tvOutput.text)
-            tvInput.append(string)
-            tvOutput.text = ""
+            binding.tvInput.append(binding.tvOutput.text)
+            binding.tvInput.append(string)
+            binding.tvOutput.text = ""
         }
     }
 
     private fun clear() {
-        tvInput.text = ""
-        tvOutput.text = ""
+        binding.tvInput.text = ""
+        binding.tvOutput.text = ""
     }
 
     private fun calculate() {
 
         try {
-            val input = ExpressionBuilder(tvInput.text.toString()).build()
+            val input = ExpressionBuilder(binding.tvInput.text.toString()).build()
             val output = input.evaluate()
             val longOutput = output.toLong()
             if (output == longOutput.toDouble()) {
-                tvOutput.text = longOutput.toString()
+                binding.tvOutput.text = longOutput.toString()
             } else {
-                tvOutput.text = output.toString()
+                binding.tvOutput.text = output.toString()
             }
 
         } catch (e: Exception) {
