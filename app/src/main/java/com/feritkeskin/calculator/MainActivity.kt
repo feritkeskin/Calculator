@@ -16,7 +16,6 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        //Number listeners
         binding.btn00.setOnClickListener { appendOnClick(true, "00") }
         binding.btn0.setOnClickListener { appendOnClick(true, "0") }
         binding.btn1.setOnClickListener { appendOnClick(true, "1") }
@@ -30,14 +29,12 @@ class MainActivity : AppCompatActivity() {
         binding.btn9.setOnClickListener { appendOnClick(true, "9") }
         binding.btnDot.setOnClickListener { appendOnClick(true, ".") }
 
-        //Operator Listeners
         binding.btnPlus.setOnClickListener { appendOnClick(false, "+") }
         binding.btnMinus.setOnClickListener { appendOnClick(false, "-") }
         binding.btnMultiply.setOnClickListener { appendOnClick(false, "*") }
         binding.btnDivide.setOnClickListener { appendOnClick(false, "/") }
         binding.btnLeftB.setOnClickListener { appendOnClick(false, "(") }
         binding.btnRightB.setOnClickListener { appendOnClick(false, ")") }
-
 
         binding.btnClear.setOnClickListener {
             clear()
